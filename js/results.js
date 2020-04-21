@@ -5,8 +5,8 @@ function renderResults(){
    
    // DONE get results from local storage
    // DONE: get & parse
-   var stringAllScoresInStorage = localStorage.getItem('scoresInLocalStorage');
-   var jsAllScoresInStorage = JSON.parse(stringAllScoresInStorage); //these are the results that can be used
+   var stringResultsInStorage = localStorage.getItem('resultsInLocalStorage');
+   var jsResultsInStorage = JSON.parse(stringResultsInStorage); //these are the results that can be used
 
    
    
@@ -22,14 +22,25 @@ function renderResults(){
    newThEl.textContent = 'SCORE';
    newTrEl.appendChild(newThEl);
 
-   tableToTarget.appendChild(newTrEl);
+   tableToTarget.appendChild(newTrEl); //renders this portion of the table
    
    
-   // TODO: put results inside table
+   // DONE: put results inside table
+   //hard coded content should come from localStorage once it's available
+   newTrEl = document.createElement('tr');
+   var newTdEl = document.createElement('td');
+   newTdEl.textContent = 'Dave Wolfe'; //hard coded for now
+   newTrEl.appendChild(newTdEl);
    
    
+   newTdEl = document.createElement('td');
+   newTdEl.textContent = '12345678'; // hard coded for now
+   newTrEl.appendChild(newTdEl);
    
-   // TODO: render table
+   // DONE: render table
+   tableToTarget.appendChild(newTrEl); //renders this portion of the table
+   
+   
 }
 
 renderResults();
