@@ -21,19 +21,26 @@ Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png'];
 
 Balloon.balloonArray = [];
 
-// TODO: create random color generator
-    // TODO: use random number generator to pick random color from array
+// DONE: create random color generator, this is a random number that doesn't exceed the length of the colorArray
+// this will then be used as the placement in the function to generate the random color
+function colorGenerator() {
+    var randomNumber = Math.floor(Math.random() * Balloon.colorArray.length);
+    // DONE: use random number generator to pick random color from array
+    var randomColor = Balloon.colorArray[randomNumber];
+    return randomColor;
+}
+colorGenerator();
 
 
 
 // DONE: create constructor for Balloons
     // color will be rendered from color array; will not be "this.color = color;"
     // for example: this.color = colorArray;
-function Balloon (color, imageSrc) {
+function Balloon (index) {
     // this.color is the index of the colorArray to make it dynamic
-    this.color = Balloon.colorArray[color];
+    this.color = Balloon.colorArray[index];
     //this.image is the source of the image in imageSrcArray(same index as the color it is assigned to)
-    this.imageSrc = Balloon.imageSrcArray[imageSrc];
+    this.imageSrc = Balloon.imageSrcArray[index];
 }
 
 // DONE: create new Balloon objects - one for each color in the color array
@@ -42,7 +49,7 @@ function Balloon (color, imageSrc) {
 // no return is needed for this function, if you need access to the objects reference the balloonArray
 function createBalloon() {
     for(i in Balloon.colorArray) {
-        var myBalloon = new Balloon(i,i);
+        var myBalloon = new Balloon(i);
         Balloon.balloonArray.push(myBalloon);
     }
 }
