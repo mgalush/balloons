@@ -4,7 +4,9 @@ var userArray = [];
 
 
 
-// TODO: create colorArray for balloons and favorite color (two colors for now)
+// DONE: create colorArray for balloons (two colors for now)
+// will add more once some testing is completed
+var colorArray = ['red', 'blue'];
 
 
 
