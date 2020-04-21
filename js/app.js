@@ -1,8 +1,8 @@
-// DONE: create userArray
-// this array will store all user information
-var userArray = [];
+// DONE: create userArray to store all user objects
+// will add more user objects are more users play the game. 
+// changed to assign to constructor to make it clear what the array belongs to
 
-
+User.userArray = [];
 
 // DONE: create colorArray for balloons (two colors for now)
 // will add more once some testing is completed
@@ -21,13 +21,6 @@ Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png'];
 
 Balloon.balloonArray = [];
 
-// DONE: create userArray to store all user objects
-// will add more user objects are more users play the game. 
-// changed to assign to constructor to make it clear what the array belongs to
-
-User.userArray = [];
-
-
 // TODO: create random color generator
     // TODO: use random number generator to pick random color from array
 
@@ -41,9 +34,6 @@ function Balloon (color, imageSrc) {
     this.color = Balloon.colorArray[color];
     //this.image is the source of the image in imageSrcArray(same index as the color it is assigned to)
     this.imageSrc = Balloon.imageSrcArray[imageSrc];
-}
-
-
 
 // DONE: create new Balloon objects - one for each color in the color array
 // this function will create all balloon objects for as long as there is information in the 2 referenced arrays
@@ -61,6 +51,7 @@ createBalloon();
 // DONE: create constructor for user
 // left out favorite color, will need to add later for the stretch goal
 // name refers to the users name in the input field in the form 'event.target.value'
+// this constructor will be referenced in the form event handler
 // currentScore will be incremental during the gaming process and will be vital in calculating the highscore
 // to calculate highScore you will see if currentScore is higher than the current highScore and replace highScore if currentScore is 
 // higher or keep the highScore as is
