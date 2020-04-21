@@ -1,0 +1,46 @@
+* {
+  border: 1px dotted red;
+  box-sizing: border-box;
+ 
+}
+
+body {
+  font-family: 'Baloo Bhaina 2', cursive;
+  }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo > h1 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 100px;
+  padding-left: 15px;
+  
+}
+
+.logo {
+ height: 200px;
+ width: 150px; 
+ }
+
+.header-ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.center {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+

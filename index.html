@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/reset.css">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/default.css">
   <link rel="stylesheet" href="css/home.css">
 </head>
@@ -13,25 +14,32 @@
 <body>
   <header>
     <nav>
-      <img src="" alt="">
+      <section class="header-logo">
+      <img class="logo" src="assets/balloons-logo.png" alt="logo">
       <h1>Balloons</h1>
-      <ul>
+    </section>
+      <ul class="header-ul">
         <li><a href="#">Scores</a></li>
         <li>Current total score: </li>
       </ul>
     </nav>
   </header>
   <main>
-    <h1></h1>
-    <img src="" alt="">
-    <p></p>
-    <form>
-      <label for="name">Name</label>
-      <input type="text" id="name">
-      <label for="favoriteColor">Favorite Color</label>
-      <select id="favoriteColor">
-        <button type="submit">Play</button>
-    </form>
+    <section>
+      <h1></h1>
+      <img class="game-screen center" src=https://placehold.it/400x400/111 alt="">
+      <p></p>
+      <form class="form center" >
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        <label for="favoriteColor">Favorite Color</label>
+        <select id="favoriteColor">
+          <option>Placeholder</option>
+        </select>
+          <br>
+          <input id="play-button" type="submit" value="PLAY">
+      </form>
+  </section>
     <div id="game">
 
     </div>
