@@ -1,4 +1,6 @@
 // TODO: create userArray
+// this array will store all user information
+var userArray = [];
 
 
 
