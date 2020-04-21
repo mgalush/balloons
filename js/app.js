@@ -34,6 +34,7 @@ function Balloon (color, imageSrc) {
     this.color = Balloon.colorArray[color];
     //this.image is the source of the image in imageSrcArray(same index as the color it is assigned to)
     this.imageSrc = Balloon.imageSrcArray[imageSrc];
+}
 
 // DONE: create new Balloon objects - one for each color in the color array
 // this function will create all balloon objects for as long as there is information in the 2 referenced arrays
@@ -65,7 +66,6 @@ function User(name) {
     // TODO: within constructor, push user into userArray using 'includes' method (to avoid duplicates)
     // this is a stretch goal
     User.userArray.push(this);
-
 }
 
 
