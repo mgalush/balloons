@@ -3,9 +3,11 @@ function renderResults(){
 
    
    
-   // TODO: get results from local storage
-   // TODO: get & parse
-   
+   // DONE get results from local storage
+   // DONE: get & parse
+   var stringAllScoresInStorage = localStorage.getItem('scoresInLocalStorage');
+   var jsAllScoresInStorage = JSON.parse(stringAllScoresInStorage); //these are the results that can be used
+
    
    
    // TODO: create table for results
