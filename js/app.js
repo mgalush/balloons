@@ -75,13 +75,13 @@ function User(name) {
     User.userArray.push(this);
 }
 
+// TODO: create renderCSSOnElement function
+
+
 
 
 // TODO: create renderButton function
 
-
-
-// TODO: create renderCSSOnElement function
 
 
 
@@ -89,7 +89,7 @@ function User(name) {
 
 
 
-// TODO: create renderTotalScore function
+// TODO: create renderCurrentScore function
 
 
 
@@ -98,14 +98,25 @@ function User(name) {
 
 
 
-// TODO: create event listener for form
+// DONE: create event listener for form
+// this will be targetting the submit/play button
+var formSubmission = document.getElementById('form');
+formSubmission.addEventListener('submit', submitHandler);
 
 
+// DONE: create an event handler for form
+function submitHandler(event) {
 
-// TODO: create an event handler for form
-      // TODO: once submit is clicked, clear page
-      // TODO: call renderAll function
-
+    event.preventDefault();
+    var userValue = document.getElementById('name');
+    var newUser = new User(userValue.value);
+    //TODO: do not proceed if the entered value in the input field is name(stretch goal)
+    // DONE: once submit is clicked, clear page
+    var target = document.getElementById('homepageContent');
+        target.innerHTML = '';
+        // DONE: call renderAll function
+        renderAll();
+    }
 
 
 // TODO: create renderBalloons function
