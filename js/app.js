@@ -1,4 +1,4 @@
-// TODO: create userArray
+// DONE: create userArray
 // this array will store all user information
 var userArray = [];
 
@@ -13,9 +13,15 @@ var userArray = [];
 
 
 
-// TODO: create constructor for Balloons
-    // color will be rendered from color array; will not be "this.color"
+// DONE: create constructor for Balloons
+    // color will be rendered from color array; will not be "this.color = color;"
     // for example: this.color = colorArray;
+function Balloon (iColor, imageSrc) {
+    // this.color is the index of the colorArray to make it dynamic
+    this.color = colorArray[iColor];
+    //this.image is the source of the image
+    this.image = imageSrc;
+}
 
 
 
