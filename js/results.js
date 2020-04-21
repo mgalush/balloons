@@ -1,3 +1,4 @@
+'use strict';
 // DONE: create function renderResults for all of the following:
 function renderResults(){
 
