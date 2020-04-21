@@ -10,8 +10,19 @@ function renderResults(){
 
    
    
-   // TODO: create table for results
+   // DONE: create table for results
+   var tableToTarget = document.getElementById('results');
+   //create the header row
+   var newTrEl = document.createElement('tr');
+   var newThEl = document.createElement('th');
+   newThEl.textContent = 'NAME';
+   newTrEl.appendChild(newThEl);
    
+   newThEl = document.createElement('th');
+   newThEl.textContent = 'SCORE';
+   newTrEl.appendChild(newThEl);
+
+   tableToTarget.appendChild(newTrEl);
    
    
    // TODO: put results inside table
@@ -20,3 +31,5 @@ function renderResults(){
    
    // TODO: render table
 }
+
+renderResults();
