@@ -75,11 +75,6 @@ function User(name) {
     User.userArray.push(this);
 }
 
-// TODO: create renderCSSOnElement function
-
-
-
-
 // TODO: create renderButton function
 
 
@@ -114,8 +109,13 @@ function submitHandler(event) {
     // DONE: once submit is clicked, clear page
     var target = document.getElementById('homepageContent');
         target.innerHTML = '';
+        var gameContainer = document.getElementById('gameContainer')
+        var createDiv = document.createElement('div')
+        createDiv.id = 'game';
+        gameContainer.appendChild(createDiv);
+
         // DONE: call renderAll function
-        renderAll();
+        // renderAll();
     }
 
 
