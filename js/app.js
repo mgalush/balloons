@@ -114,13 +114,14 @@ function submitHandler(event) {
     var newUser = new User(userValue.value);
     //TODO: do not proceed if the entered value in the input field is name(stretch goal)
     // DONE: once submit is clicked, clear page
-    var target = document.getElementById('homepageContent');
+    var target = document.getElementById('deleteMe');
         target.innerHTML = '';
         var gameContainer = document.getElementById('gameContainer')
         var createDiv = document.createElement('div')
         createDiv.id = 'game';
-        gameContainer.appendChild(createDiv);
+        target.appendChild(createDiv);
         renderCurrentScore();
+        renderBalloons();
 
         // DONE: call renderAll function
         // renderAll();
@@ -128,6 +129,23 @@ function submitHandler(event) {
 
 
 // TODO: create renderBalloons function
+function renderBalloons() {
+    var divEl = document.getElementById('game');
+// will need a random generator for the x and the y position
+// this will need to generate each time the for loop runs
+// the image being rendered is hard coded, will need to make this dynamic and only pull the image that we want it to be
+// will need to make the number of images rendered to be dynamic based on time passed etc
+
+// for(var i = 0; i < 5; i++) {
+    var createImg = document.createElement('img');
+    createImg.src = Balloon.imageSrcArray[0];
+    createImg.style.position = "absolute";
+    createImg.style.left = 0+'px';
+    createImg.style.top = 100+'px'; // min 100 px
+    createImg.style.height = '100px';
+    divEl.appendChild(createImg);
+    // }
+}
 
 
 
