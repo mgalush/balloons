@@ -1,6 +1,6 @@
 'use strict';
 
-var sec = 60;
+
 
 // DONE: create userArray to store all user objects
 // will add more user objects are more users play the game.
@@ -23,7 +23,7 @@ Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png'];
 // refer to createBalloon function
 // changed to assign to constructor to make it clear what the array belongs to
 
-Balloon.balloonArray = [];
+// Balloon.balloonArray = [];
 
 // DONE: create random color generator, this is a random number that doesn't exceed the length of the colorArray
 // this will then be used as the placement in the function to generate the random color
@@ -51,13 +51,17 @@ function Balloon (index) {
 // this function will create all balloon objects for as long as there is information in the 2 referenced arrays
 // then it will push the objects into the balloon array
 // no return is needed for this function, if you need access to the objects reference the balloonArray
-function createBalloon() {
-  for(var i in Balloon.colorArray) {
-    var myBalloon = new Balloon(i);
-    Balloon.balloonArray.push(myBalloon);
-  }
-}
-createBalloon();
+          // function createBalloon() {
+          //   for(var i in Balloon.colorArray) {
+          //     var myBalloon = new Balloon(i);
+          //     Balloon.balloonArray.push(myBalloon);
+          //     console.log(myBalloon);
+          //     // myBalloon.addEventListener('click', function(){
+          //     //   myBalloon.remove();
+          //     // })
+          //   }
+          // }
+          // createBalloon();
 
 
 // DONE: create constructor for user
@@ -125,7 +129,6 @@ function submitHandler(event) {
     createDiv.id = 'game';
     target.appendChild(createDiv);
     renderCurrentScore();
-    renderBalloons();
     var divEl = document.getElementById('game');
     var anotherH3 = document.createElement('h3');
     anotherH3.id = 'clickAnywhere'
@@ -134,6 +137,7 @@ function submitHandler(event) {
     // DONE: invoke startTimer functions
     // DONE: invoke startGame function
     startTimer();
+    startBalloons();
         // TODO: invoke renderBalloons function
         // DONE: call renderAll function
         // renderAll();
@@ -144,6 +148,20 @@ function submitHandler(event) {
 // TODO: create renderBalloons function
 function renderBalloons() {
   var divEl = document.getElementById('game');
+  divEl.addEventListener('click', function(event){
+    console.log(event.target.id);
+    if(event.target.id === 'red'){
+      // User.userArray[User.userArray.length -1].currentScore++;
+      User.userArray[User.userArray.length -1].currentScore++;
+    }
+    else if(event.target.id === 'blue') {
+      User.userArray[User.userArray.length -1].currentScore--
+    }
+    console.log(User.userArray[User.userArray.length -1].currentScore);
+    if(event.target.tagName === 'IMG'){
+      event.target.remove();
+    }
+  })
   // will need a random generator for the x and the y position
   // this will need to generate each time the for loop runs
   // the image being rendered is hard coded, will need to make this dynamic and only pull the image that we want it to be
@@ -153,13 +171,12 @@ function renderBalloons() {
   //   variable to store balloon count, need to increase number of balloons when we render to the screen each time
   //   render balloons to the page the first time using balloon count
   //  render balloons to the page every x seconds using the increased balloon count
-  var balloonCount = 6;
-
-
+  var balloonCount = 1;
+  var randomBalloon = 2;
+  var sec = 60;
 
   var balloonRender = setInterval (function(){
-    console.log(sec);
-
+    
 
 
     for (var i = 0; i < balloonCount; i++){//loop for the target balloons
@@ -167,23 +184,45 @@ function renderBalloons() {
       // top range between something like 50 and 1000 and left range something like 0 to 1450 (need to make sure the balloons are within the background image)
       // may need to add an id to the balloons depending on the click event handler functionality
       var createImg = document.createElement('img');
-      createImg.src = Balloon.imageSrcArray[0];
+      var newBalloon = new Balloon(0);
+      // createImg.addEventListener('click', function(){
+      //   createImg.remove();
+      // });
+      var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
+      var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+      createImg.src = newBalloon.imageSrc;
+      createImg.id = newBalloon.color;
       createImg.style.position = 'absolute';
-      createImg.style.left = 0+'px';
-      createImg.style.top = 100+'px'; // min 100 px
+      createImg.style.left = balloonLeft+'px';
+      createImg.style.top = balloonTop+'px'; // min 100 px
       createImg.style.height = '100px';
       divEl.appendChild(createImg);
     }
-    balloonCount = balloonCount + 6;
-    console.log('balloon count: ' + balloonCount);
+    balloonCount = balloonCount + 1;
+    for (i = 0; i < randomBalloon; i++){//loop for the target balloons
+      // need to generate random numbers for createImg.style.left and createImg.style.top
+      // top range between something like 50 and 1000 and left range something like 0 to 1450 (need to make sure the balloons are within the background image)
+      // may need to add an id to the balloons depending on the click event handler functionality
+      var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
+      var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+      var randomIndex = Math.floor(Math.random() * (Balloon.colorArray.length + 1));
+      var createImg = document.createElement('img');
+      var newRandomBalloon = new Balloon(1);
+      createImg.id = newRandomBalloon.color;
+      createImg.src = newRandomBalloon.imageSrc;
+      createImg.style.position = 'absolute';
+      createImg.style.left = balloonLeft+'px';
+      createImg.style.top = balloonTop+'px'; // min 100 px
+      createImg.style.height = '100px';
+      divEl.appendChild(createImg);
+    }
+    randomBalloon = randomBalloon + 2;
 
     // add another for loop for the other balloons (non-target)
     // need a different balloon count variable - this loop should create more balloons than the first one
     // this loop will create the balloons of random colors - like previous for loop but using random colors from the color array that aren't 0
     // may need to add an id to the balloons depending on the click event handler functionality
     sec = sec - 5;
-
-    console.log('sec minus 5: ', sec);
     if (sec < 0) {
       clearInterval(balloonRender);
     }
@@ -213,6 +252,11 @@ function startTimer() {
     timerEvent.addEventListener('click', handleTimer);
 }
 
+function startBalloons() {
+  var balloonEvent = document.getElementById('game');
+  balloonEvent.addEventListener('click', renderBalloons);
+}
+
 function stopTimer() {
     var timerEvent = document.getElementById('game');
     timerEvent.removeEventListener('click', handleTimer);
@@ -222,7 +266,7 @@ function stopTimer() {
 function handleTimer(event){
     
     //DONE: create a <h3> and id for the timer in the HTML for it to display on the page
-
+    var sec = 60;
     var timer = setInterval(function(){
         document.getElementById('timer').innerHTML='00:' + sec;
         sec--;
