@@ -1,18 +1,11 @@
-* {
-  border: 1px dotted red;
-  box-sizing: border-box;
- 
-}
-
 body {
   font-family: 'Baloo Bhaina 2', cursive;
-  }
+}
 
 nav {
   display: flex;
   justify-content: space-between;
   padding: 10px 50px;
-
 }
 
 .header-logo {
@@ -20,22 +13,10 @@ nav {
   align-items: center;
 }
 
-.header-logo > h1 {
-  font-family: 'Luckiest Guy', cursive;
-  font-size: 100px;
-  padding-left: 15px;
-  
-}
-
-.header-logo > h1 > a {
-  text-decoration: none;
-  color: inherit;
-}
-
 .logo {
- height: 200px;
- width: 150px; 
- }
+  height: 80px;
+  width: 300px;
+}
 
 .header-ul {
   display: flex;
@@ -53,7 +34,6 @@ footer {
   border-top: 1px solid black;
   font-size: 32px;
   padding-top: 25px;
-  
 }
 
 footer li a {
@@ -62,5 +42,5 @@ footer li a {
 }
 
 footer li a:hover {
-  color: rgb(8, 177, 233) ;
+  color: rgb(8, 177, 233);
 }
