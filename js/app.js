@@ -147,6 +147,7 @@ function submitHandler(event) {
 
 // TODO: create renderBalloons function
 function renderBalloons() {
+  stopBalloons();
   var divEl = document.getElementById('game');
   divEl.addEventListener('click', function(event){
     console.log(event.target.id);
@@ -255,6 +256,9 @@ function startTimer() {
 function startBalloons() {
   var balloonEvent = document.getElementById('game');
   balloonEvent.addEventListener('click', renderBalloons);
+}
+function stopBalloons() {
+  document.getElementById('game').removeEventListener('click', renderBalloons);
 }
 
 function stopTimer() {
