@@ -112,6 +112,7 @@ formSubmission.addEventListener('submit', submitHandler);
 // DONE: create an event handler for form
 function submitHandler(event) {
 
+
   event.preventDefault();
   var userValue = document.getElementById('name');
   var newUser = new User(userValue.value);
@@ -129,6 +130,7 @@ function submitHandler(event) {
   // DONE: call renderAll function
   // renderAll();
 }
+
 
 
 // TODO: create renderBalloons function
@@ -199,13 +201,21 @@ function renderBalloons() {
 //TODO: create a <div> and id for the timer in the HTML for it to display on the page
 //TODO: bind the timer to the event
 function timer(){
-  var timer = setInterval(function(){
-    document.getElementById('game').innerHTML='00:' + sec;
-    sec--;
-    if (sec < 0) {
-      clearInterval(timer);
-    }
-  }, 1000);
+
+    var divEl = document.getElementById('game');
+    var createH3 = document.createElement('h3');
+    var timer = setInterval(function(){
+        document.getElementById('timer').innerHTML='00:' + sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+    createH3.textContent = timer;
+    createH3.id = "timer";
+    divEl.appendChild(createH3);
+
+
 }
 
 
