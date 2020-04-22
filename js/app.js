@@ -1,3 +1,4 @@
+'use strict';
 // DONE: create userArray to store all user objects
 // will add more user objects are more users play the game. 
 // changed to assign to constructor to make it clear what the array belongs to
@@ -172,7 +173,14 @@ function renderBalloons() {
 
 // TODO: create endGame function
     // TODO: push totalScore into array
-    // TODO: store totalScore array in local storage
+    // DONE: store userArray array in local storage
+    //storing userArray because all user score info should have been updated in the User object and pushed to userArray
+
+    var stringyUserResults = JSON.stringify(User.userArray);
+    localStorage.setItem('resultsInLocalStorage', stringyUserResults);
+
+
+
     // TODO: remove all event listeners
     // TODO: send user to results page
 
