@@ -149,8 +149,19 @@ function renderBalloons() {
 
 
 
-// TODO: create startTimer function
-
+// DONE: create startTimer function
+    //TODO: create a <div> and id for the timer in the HTML for it to display on the page
+    //TODO: bind the timer to the event
+function timer(){
+    var sec = 60
+    var timer = setInterval(function(){
+        document.getElementById('timerDisplay').innerHTML='00:' = sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
 
 
 // TODO: add event listener for start button
