@@ -1,4 +1,7 @@
 'use strict';
+
+var sec = 60
+
 // DONE: create userArray to store all user objects
 // will add more user objects are more users play the game. 
 // changed to assign to constructor to make it clear what the array belongs to
@@ -153,9 +156,8 @@ function renderBalloons() {
     //TODO: create a <div> and id for the timer in the HTML for it to display on the page
     //TODO: bind the timer to the event
 function timer(){
-    var sec = 60
     var timer = setInterval(function(){
-        document.getElementById('timerDisplay').innerHTML='00:' = sec;
+        document.getElementById('game').innerHTML='00:' + sec;
         sec--;
         if (sec < 0) {
             clearInterval(timer);
