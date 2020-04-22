@@ -85,6 +85,12 @@ function User(name) {
 
 
 // TODO: create renderCurrentScore function
+function renderCurrentScore() {
+    var targetDiv = document.getElementById('game');
+    var createH3 = document.createElement('h3');
+    createH3.textContent = 'Current Score: ' + User.userArray[User.userArray.length-1].currentScore;
+    targetDiv.appendChild(createH3);
+}
 
 
 
@@ -113,6 +119,7 @@ function submitHandler(event) {
         var createDiv = document.createElement('div')
         createDiv.id = 'game';
         gameContainer.appendChild(createDiv);
+        renderCurrentScore();
 
         // DONE: call renderAll function
         // renderAll();

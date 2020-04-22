@@ -32,3 +32,10 @@ div {
   background-image: url("https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/weather/cloud/cumulus-cloud.jpg");
   height: 750px;
 }
+
+h3 {
+  font-size: 50px;
+  padding-top: 30px;
+  padding-right: 45px;
+  float: right;
+} 
