@@ -49,7 +49,7 @@ function Balloon (index) {
 // then it will push the objects into the balloon array
 // no return is needed for this function, if you need access to the objects reference the balloonArray
 function createBalloon() {
-    for(i in Balloon.colorArray) {
+    for(var i in Balloon.colorArray) {
         var myBalloon = new Balloon(i);
         Balloon.balloonArray.push(myBalloon);
     }
