@@ -118,15 +118,22 @@ function submitHandler(event) {
     //TODO: do not proceed if the entered value in the input field is name(stretch goal)
     // DONE: once submit is clicked, clear page
     var target = document.getElementById('deleteMe');
-        target.innerHTML = '';
-        var gameContainer = document.getElementById('gameContainer')
-        var createDiv = document.createElement('div')
-        createDiv.id = 'game';
-        target.appendChild(createDiv);
-        renderCurrentScore();
-        renderBalloons();
-        timer();
-
+    target.innerHTML = '';
+    var gameContainer = document.getElementById('gameContainer')
+    var createDiv = document.createElement('div')
+    createDiv.id = 'game';
+    target.appendChild(createDiv);
+    renderCurrentScore();
+    renderBalloons();
+    var divEl = document.getElementById('game');
+    var anotherH3 = document.createElement('h3');
+    anotherH3.id = 'clickAnywhere'
+    anotherH3.textContent = 'Click anywhere to begin';
+    divEl.appendChild(anotherH3);
+    // DONE: invoke startTimer functions
+    // DONE: invoke startGame function
+    startTimer();
+        // TODO: invoke renderBalloons function
         // DONE: call renderAll function
         // renderAll();
     }
@@ -154,11 +161,21 @@ function renderBalloons() {
 
 
 // DONE: create startTimer function
-    //TODO: create a <div> and id for the timer in the HTML for it to display on the page
-    //TODO: bind the timer to the event
-function timer(){
-    var divEl = document.getElementById('game');
-    var createH3 = document.createElement('h3');
+// DONE: add event listener for starting the timer
+function startTimer() {
+    var timerEvent = document.getElementById('game');
+    timerEvent.addEventListener('click', handleTimer);
+}
+
+function stopTimer() {
+    var timerEvent = document.getElementById('game');
+    timerEvent.removeEventListener('click', handleTimer);
+}
+
+//DONE: bind the timer to the event
+function handleTimer(event){
+    
+    //DONE: create a <h3> and id for the timer in the HTML for it to display on the page
     var timer = setInterval(function(){
         document.getElementById('timer').innerHTML='00:' + sec;
         sec--;
@@ -166,17 +183,21 @@ function timer(){
             clearInterval(timer);
         }
     }, 1000);
-    createH3.textContent = timer;
+    timerRender(timer);
+}
+
+function timerRender(interval) {
+    var divEl = document.getElementById('game');
+    var createH3 = document.createElement('h3');
+    createH3.textContent = interval;
     createH3.id = "timer";
     divEl.appendChild(createH3);
-
+    var h3 = document.getElementById('clickAnywhere');
+    h3.remove();
+    stopTimer();
 }
 
 
-// TODO: add event listener for start button
-    // TODO: invoke renderBalloons function
-    // TODO: invoke startTimer functions
-    // TODO: invoke startGame function
 
 
 
@@ -192,17 +213,22 @@ function timer(){
 
 
 // TODO: create endGame function
-    // TODO: push totalScore into array
+function endGame() {
+    // TODO: push currentScore into array
+    User.userArray[userArray.length -1].currentScore.push(User.userArray[userArray.length -1].allScores);
     // DONE: store userArray array in local storage
     //storing userArray because all user score info should have been updated in the User object and pushed to userArray
-
     var stringyUserResults = JSON.stringify(User.userArray);
     localStorage.setItem('resultsInLocalStorage', stringyUserResults);
-
-
-
     // TODO: remove all event listeners
+    formSubmission.removeEventListener('submit', submitHandler);
     // TODO: send user to results page
+    location.replace("results.html");
+}
+
+
+
+
 
 
     
