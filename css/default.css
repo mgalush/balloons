@@ -27,6 +27,11 @@ nav {
   
 }
 
+.header-logo > h1 > a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .logo {
  height: 200px;
  width: 150px; 
@@ -43,4 +48,19 @@ nav {
   text-align: center;
 }
 
+footer {
+  text-align: center;
+  border-top: 1px solid black;
+  font-size: 32px;
+  padding-top: 25px;
+  
+}
 
+footer li a {
+  color: blue;
+  text-decoration: none;
+}
+
+footer li a:hover {
+  color: rgb(8, 177, 233) ;
+}
