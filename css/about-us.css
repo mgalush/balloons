@@ -33,3 +33,6 @@ footer {
   border: none;
 }
 
+.header-ul {
+  display: none;
+}
