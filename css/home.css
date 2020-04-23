@@ -1,8 +1,8 @@
 .game-screen {
   border: 3px solid black;
   margin-top: 10px;
-  height: 400px;
-  width: 800px;
+  height: 200px;
+  width: 500px;
 }
 
 .form {
@@ -58,4 +58,13 @@ h3 {
   padding-bottom: 15px;
   font-weight: bold;
   color: red;
+}
+
+h4 {
+  font-size: 30px;
+  padding: 15px;
+}
+
+p {
+  width: 50%;
 }
