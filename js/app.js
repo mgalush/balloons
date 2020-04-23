@@ -69,7 +69,6 @@ function submitHandler(event) {
 }
 
 function balloonClickHandler(event) {
-  console.log(event.target.id);
   if (event.target.id === Balloon.colorArray[0].color) {
     // if color === 'selected-color', add points to score
     User.userArray[User.userArray.length - 1].currentScore++;
@@ -199,6 +198,14 @@ function stopTimer() {
   timerEvent.removeEventListener('click', handleTimer);
 }
 
+function renderGif() {
+  var target = document.getElementById('game');
+  var createImg = document.createElement('img');
+  createImg.src = "https://media.giphy.com/media/NSHwhrFyDcLY1RSkkw/source.gif";
+  createImg.id = "balloon-gif"
+  target.appendChild(createImg);
+}
+
 //bind the timer to the event
 function handleTimer(event) {
   var sec = 30;
@@ -227,6 +234,17 @@ function timerRender(interval) {
 }
 
 function endGame() {
+  document.getElementById('game').remove();
+  var createDiv = document.createElement('div');
+  var target = document.getElementById('deleteMe')
+  createDiv.id = 'game';
+  target.appendChild(createDiv);
+  
+  renderGif();
+  setTimeout( function(){
+    // send user to results page
+    window.location.href = 'https://mgalush.github.io/balloons/results';
+  }, 3000)
   // push currentScore into array
   User.userArray[User.userArray.length - 1].allScores.push(
     User.userArray[User.userArray.length - 1].currentScore
@@ -234,6 +252,5 @@ function endGame() {
   // store userArray array in local storage
   var stringyUserResults = JSON.stringify(User.userArray);
   localStorage.setItem('resultsInLocalStorage', stringyUserResults);
-  // send user to results page
-  window.location.href = 'https://mgalush.github.io/balloons/results';
+  
 }
