@@ -170,32 +170,34 @@ function renderBalloons() {
   var balloonCount = 1;
   var randomBalloon = 2;
   var sec = 25;
+  var viewHeight = window.innerHeight;
+  var viewWidth = window.innerWidth;
   var createImg = document.createElement('img');
   var newBalloon = new Balloon(0);
   // createImg.addEventListener('click', function(){
   //   createImg.remove();
   // });
-  var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-  var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+  var balloonLeft = Math.floor(Math.random() * (100 - 10));
+  var balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
   createImg.src = newBalloon.imageSrc;
   createImg.id = newBalloon.color;
   createImg.style.position = 'absolute';
-  createImg.style.left = balloonLeft+'px';
-  createImg.style.top = balloonTop+'px'; // min 100 px
+  createImg.style.left = balloonLeft+'%';
+  createImg.style.top = balloonTop+'%'; // min 100 px
   createImg.style.height = '100px';
   divEl.appendChild(createImg);
   balloonCount = balloonCount + 1;
   for(var i = 0; i < randomBalloon; i++){
-    balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-    balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+    balloonLeft = Math.floor(Math.random() * (100 - 10));
+    balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
     var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
     createImg = document.createElement('img');
     var newRandomBalloon = new Balloon(1);
     createImg.id = newRandomBalloon.color;
     createImg.src = newRandomBalloon.imageSrc;
     createImg.style.position = 'absolute';
-    createImg.style.left = balloonLeft+'px';
-    createImg.style.top = balloonTop+'px'; // min 100 px
+    createImg.style.left = balloonLeft+'%';
+    createImg.style.top = balloonTop+'%'; // min 100 px
     createImg.style.height = '100px';
     divEl.appendChild(createImg);
   }
@@ -215,13 +217,13 @@ function renderBalloons() {
       // createImg.addEventListener('click', function(){
       //   createImg.remove();
       // });
-      var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-      var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+      var balloonLeft = Math.floor(Math.random() * (100 - 10));
+      var balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
       createImg.src = newBalloon.imageSrc;
       createImg.id = newBalloon.color;
       createImg.style.position = 'absolute';
-      createImg.style.left = balloonLeft+'px';
-      createImg.style.top = balloonTop+'px'; // min 100 px
+      createImg.style.left = balloonLeft+'%';
+      createImg.style.top = balloonTop+'%'; // min 100 px
       createImg.style.height = '100px';
       divEl.appendChild(createImg);
     }
@@ -230,16 +232,16 @@ function renderBalloons() {
       // need to generate random numbers for createImg.style.left and createImg.style.top
       // top range between something like 50 and 1000 and left range something like 0 to 1450 (need to make sure the balloons are within the background image)
       // may need to add an id to the balloons depending on the click event handler functionality
-      balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-      balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+      balloonLeft = Math.floor(Math.random() * (100 - 10));
+      balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
       var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
       createImg = document.createElement('img');
       var newRandomBalloon = new Balloon(1);
       createImg.id = newRandomBalloon.color;
       createImg.src = newRandomBalloon.imageSrc;
       createImg.style.position = 'absolute';
-      createImg.style.left = balloonLeft+'px';
-      createImg.style.top = balloonTop+'px'; // min 100 px
+      createImg.style.left = balloonLeft+'%';
+      createImg.style.top = balloonTop+'%'; // min 100 px
       createImg.style.height = '100px';
       divEl.appendChild(createImg);
     }
