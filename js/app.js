@@ -293,7 +293,7 @@ function handleTimer(event){
   //DONE: create a <h3> and id for the timer in the HTML for it to display on the page
   var sec = 30;
   var timer = setInterval(function(){
-    document.getElementById('timer').innerHTML='00:' + sec;
+    document.getElementById('timer').innerHTML='00:' + sec.toString().padStart(2, '0');
     sec--;
     if (sec < 0) {
       clearInterval(timer);
