@@ -170,6 +170,35 @@ function renderBalloons() {
   var balloonCount = 1;
   var randomBalloon = 2;
   var sec = 25;
+  var createImg = document.createElement('img');
+  var newBalloon = new Balloon(0);
+  // createImg.addEventListener('click', function(){
+  //   createImg.remove();
+  // });
+  var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
+  var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+  createImg.src = newBalloon.imageSrc;
+  createImg.id = newBalloon.color;
+  createImg.style.position = 'absolute';
+  createImg.style.left = balloonLeft+'px';
+  createImg.style.top = balloonTop+'px'; // min 100 px
+  createImg.style.height = '100px';
+  divEl.appendChild(createImg);
+  balloonCount = balloonCount + 1;
+  balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
+  balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+  var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
+  createImg = document.createElement('img');
+  var newRandomBalloon = new Balloon(1);
+  createImg.id = newRandomBalloon.color;
+  createImg.src = newRandomBalloon.imageSrc;
+  createImg.style.position = 'absolute';
+  createImg.style.left = balloonLeft+'px';
+  createImg.style.top = balloonTop+'px'; // min 100 px
+  createImg.style.height = '100px';
+  divEl.appendChild(createImg);
+  randomBalloon = randomBalloon + 2;
+
 
   var balloonRender = setInterval (function(){
 
