@@ -61,6 +61,14 @@ h3 {
   color: red;
 }
 
+
+#instructions {
+  text-align: center;
+  font-size: 50px;
+  padding-top: 30px;
+  font-weight: bold;
+}
+
 h4 {
   font-size: 30px;
   padding: 15px;
@@ -69,3 +77,4 @@ h4 {
 p {
   width: 50%;
 }
+
