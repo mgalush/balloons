@@ -51,17 +51,17 @@ function Balloon (index) {
 // this function will create all balloon objects for as long as there is information in the 2 referenced arrays
 // then it will push the objects into the balloon array
 // no return is needed for this function, if you need access to the objects reference the balloonArray
-          // function createBalloon() {
-          //   for(var i in Balloon.colorArray) {
-          //     var myBalloon = new Balloon(i);
-          //     Balloon.balloonArray.push(myBalloon);
-          //     console.log(myBalloon);
-          //     // myBalloon.addEventListener('click', function(){
-          //     //   myBalloon.remove();
-          //     // })
-          //   }
-          // }
-          // createBalloon();
+// function createBalloon() {
+//   for(var i in Balloon.colorArray) {
+//     var myBalloon = new Balloon(i);
+//     Balloon.balloonArray.push(myBalloon);
+//     console.log(myBalloon);
+//     // myBalloon.addEventListener('click', function(){
+//     //   myBalloon.remove();
+//     // })
+//   }
+// }
+// createBalloon();
 
 
 // DONE: create constructor for user
@@ -83,20 +83,13 @@ function User(name) {
   User.userArray.push(this);
 }
 
-// TODO: create renderButton function
-
-
-
-
-// TODO: create renderCountdown function
-
-
 
 // TODO: create renderCurrentScore function
 function renderCurrentScore() {
   var targetDiv = document.getElementById('game');
   var createH3 = document.createElement('h3');
-  createH3.textContent = 'Current Score: ' + User.userArray[User.userArray.length-1].currentScore;
+  createH3.id = 'currentScore';
+  createH3.innerHTML = 'Current Score: ' + User.userArray[User.userArray.length -1].currentScore;
   targetDiv.appendChild(createH3);
 }
 
@@ -117,52 +110,54 @@ formSubmission.addEventListener('submit', submitHandler);
 function submitHandler(event) {
 
 
-    event.preventDefault();
-    var userValue = document.getElementById('name');
-    var newUser = new User(userValue.value);
-    //TODO: do not proceed if the entered value in the input field is name(stretch goal)
-    // DONE: once submit is clicked, clear page
-    var target = document.getElementById('deleteMe');
-    target.innerHTML = '';
-    var gameContainer = document.getElementById('gameContainer')
-    var createDiv = document.createElement('div')
-    createDiv.id = 'game';
-    target.appendChild(createDiv);
-    renderCurrentScore();
-    var divEl = document.getElementById('game');
-    var anotherH3 = document.createElement('h3');
-    anotherH3.id = 'clickAnywhere'
-    anotherH3.textContent = 'Click anywhere to begin';
-    divEl.appendChild(anotherH3);
-    // DONE: invoke startTimer functions
-    // DONE: invoke startGame function
-    startTimer();
-    startBalloons();
-        // TODO: invoke renderBalloons function
-        // DONE: call renderAll function
-        // renderAll();
-    }
+  event.preventDefault();
+  var userValue = document.getElementById('name');
+  var newUser = new User(userValue.value);
+  //TODO: do not proceed if the entered value in the input field is name(stretch goal)
+  // DONE: once submit is clicked, clear page
+  var target = document.getElementById('deleteMe');
+  target.innerHTML = '';
+  var gameContainer = document.getElementById('gameContainer');
+  var createDiv = document.createElement('div');
+  createDiv.id = 'game';
+  target.appendChild(createDiv);
+  renderCurrentScore();
+  var divEl = document.getElementById('game');
+  var anotherH3 = document.createElement('h3');
+  anotherH3.id = 'clickAnywhere';
+  anotherH3.textContent = 'Click anywhere to begin';
+  divEl.appendChild(anotherH3);
+  // DONE: invoke startTimer functions
+  // DONE: invoke startGame function
+  startTimer();
+  startBalloons();
+  // DONE: call renderAll function
+  // renderAll();
+}
 
 
 
-// TODO: create renderBalloons function
+// DONE: create renderBalloons function
 function renderBalloons() {
   stopBalloons();
   var divEl = document.getElementById('game');
   divEl.addEventListener('click', function(event){
     console.log(event.target.id);
     if(event.target.id === 'red'){
-      // User.userArray[User.userArray.length -1].currentScore++;
+      // DONE: if color === 'selected-color', add points to score
       User.userArray[User.userArray.length -1].currentScore++;
     }
     else if(event.target.id === 'blue') {
-      User.userArray[User.userArray.length -1].currentScore--
+      // DONE: else color !== 'selected-color', remove points from score
+      User.userArray[User.userArray.length -1].currentScore--;
     }
-    console.log(User.userArray[User.userArray.length -1].currentScore);
+    renderCurrentScore();
+    document.getElementById('currentScore').remove();
     if(event.target.tagName === 'IMG'){
+      // DONE: when balloon is clicked, remove from DOM
       event.target.remove();
     }
-  })
+  });
   // will need a random generator for the x and the y position
   // this will need to generate each time the for loop runs
   // the image being rendered is hard coded, will need to make this dynamic and only pull the image that we want it to be
@@ -174,10 +169,10 @@ function renderBalloons() {
   //  render balloons to the page every x seconds using the increased balloon count
   var balloonCount = 1;
   var randomBalloon = 2;
-  var sec = 60;
+  var sec = 25;
 
   var balloonRender = setInterval (function(){
-    
+
 
 
     for (var i = 0; i < balloonCount; i++){//loop for the target balloons
@@ -204,10 +199,10 @@ function renderBalloons() {
       // need to generate random numbers for createImg.style.left and createImg.style.top
       // top range between something like 50 and 1000 and left range something like 0 to 1450 (need to make sure the balloons are within the background image)
       // may need to add an id to the balloons depending on the click event handler functionality
-      var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-      var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
-      var randomIndex = Math.floor(Math.random() * (Balloon.colorArray.length + 1));
-      var createImg = document.createElement('img');
+      balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
+      balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+      var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
+      createImg = document.createElement('img');
       var newRandomBalloon = new Balloon(1);
       createImg.id = newRandomBalloon.color;
       createImg.src = newRandomBalloon.imageSrc;
@@ -249,11 +244,12 @@ function renderBalloons() {
 
 // DONE: add event listener for starting the timer
 function startTimer() {
-    var timerEvent = document.getElementById('game');
-    timerEvent.addEventListener('click', handleTimer);
+  var timerEvent = document.getElementById('game');
+  timerEvent.addEventListener('click', handleTimer);
 }
 
 function startBalloons() {
+  // DONE: create addEventListener function for clicking of balloons
   var balloonEvent = document.getElementById('game');
   balloonEvent.addEventListener('click', renderBalloons);
 }
@@ -262,35 +258,37 @@ function stopBalloons() {
 }
 
 function stopTimer() {
-    var timerEvent = document.getElementById('game');
-    timerEvent.removeEventListener('click', handleTimer);
+  var timerEvent = document.getElementById('game');
+  timerEvent.removeEventListener('click', handleTimer);
 }
 
 //DONE: bind the timer to the event
 function handleTimer(event){
-    
-    //DONE: create a <h3> and id for the timer in the HTML for it to display on the page
-    var sec = 60;
-    var timer = setInterval(function(){
-        document.getElementById('timer').innerHTML='00:' + sec;
-        sec--;
-        if (sec < 0) {
-            clearInterval(timer);
-        }
-    }, 1000);
-    timerRender(timer);
+
+  //DONE: create a <h3> and id for the timer in the HTML for it to display on the page
+  var sec = 30;
+  var timer = setInterval(function(){
+    document.getElementById('timer').innerHTML='00:' + sec;
+    sec--;
+    if (sec < 0) {
+      clearInterval(timer);
+      endGame();
+
+    }
+  }, 1000);
+  timerRender(timer);
 }
 
 function timerRender(interval) {
-    var divEl = document.getElementById('game');
-    var createH3 = document.createElement('h3');
-    createH3.textContent = interval;
-    createH3.id = "timer";
-    divEl.appendChild(createH3);
+  var divEl = document.getElementById('game');
+  var createH3 = document.createElement('h3');
+  createH3.textContent = interval;
+  createH3.id = 'timer';
+  divEl.appendChild(createH3);
 
-    var h3 = document.getElementById('clickAnywhere');
-    h3.remove();
-    stopTimer();
+  var h3 = document.getElementById('clickAnywhere');
+  h3.remove();
+  stopTimer();
 }
 
 
@@ -298,38 +296,22 @@ function timerRender(interval) {
 
 
 
-// TODO: create addEventListener function for clicking of balloons
 
 
 
-// TODO: create startGame function
-// TODO: when balloon is clicked, remove from array
-// TODO: if color === 'selected-color', add points to score
-// TODO: else color !== 'selected-color', remove points from score
+
 
 
 
 // TODO: create endGame function
 
 function endGame() {
-    // TODO: push currentScore into array
-    User.userArray[userArray.length -1].currentScore.push(User.userArray[userArray.length -1].allScores);
-    // DONE: store userArray array in local storage
-    //storing userArray because all user score info should have been updated in the User object and pushed to userArray
-    var stringyUserResults = JSON.stringify(User.userArray);
-    localStorage.setItem('resultsInLocalStorage', stringyUserResults);
-    // TODO: remove all event listeners
-    formSubmission.removeEventListener('submit', submitHandler);
-    // TODO: send user to results page
-    location.replace("results.html");
+  // TODO: push currentScore into array
+  User.userArray[User.userArray.length -1].allScores.push(User.userArray[User.userArray.length -1].currentScore);
+  // DONE: store userArray array in local storage
+  //storing userArray because all user score info should have been updated in the User object and pushed to userArray
+  var stringyUserResults = JSON.stringify(User.userArray);
+  localStorage.setItem('resultsInLocalStorage', stringyUserResults);
+  // DONE: send user to results page
+  window.location.pathname = '/results.html';
 }
-
-
-
-// TODO: remove all event listeners
-// TODO: send user to results page
-
-
-
-// TODO: invoke endGame function
-// TODO: delay start of invocation of function
