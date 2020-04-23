@@ -1,4 +1,4 @@
-# Balloons
+![Balloons](assets/balloon-logo.png)
 
 ## By: Bryant Davis, Marlene Rinker, Dave Wolfe, & Melissa Galush
 ### Final Project for Code Fellows 201
