@@ -11,12 +11,12 @@ User.userArray = [];
 // DONE: create colorArray for balloons (two colors for now)
 // will add more once some testing is completed
 // changed to assign to constructor to make it clear what the array belongs to
-Balloon.colorArray = ['red', 'blue'];
+Balloon.colorArray = ['red', 'blue', 'green', 'yellow', 'purple', 'pink', 'orange', 'light-blue'];
 
 // DONE: create imageSrcArray for balloons (two colors for now)
 // will add more once some testing is completed
 // changed to assign to constructor to make it clear what the array belongs to
-Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png'];
+Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png', 'assets/green-balloon.png', 'assets/yellow-balloon.png', 'assets/purple-balloon.png', 'assets/pink-balloon.png', 'assets/orange-balloon.png', 'assets/light-blue-balloon.png'];
 
 // DONE: create balloonArray to store all balloon objects
 // will add more balloon objects are more colors and image src are added into the other arrays.
@@ -25,15 +25,15 @@ Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png'];
 
 // Balloon.balloonArray = [];
 
-// DONE: create random color generator, this is a random number that doesn't exceed the length of the colorArray
+// DONE: create random color generator, this is a random number that doesn't exceed the length of the colorArray - don't need this because of the way we ended up rendering balloons
 // this will then be used as the placement in the function to generate the random color
-function colorGenerator() {
-  var randomNumber = Math.floor(Math.random() * Balloon.colorArray.length);
-  // DONE: use random number generator to pick random color from array
-  var randomColor = Balloon.colorArray[randomNumber];
-  return randomColor;
-}
-colorGenerator();
+// function colorGenerator() {
+//   var randomNumber = Math.floor(Math.random() * Balloon.colorArray.length);
+//   // DONE: use random number generator to pick random color from array
+//   var randomColor = Balloon.colorArray[randomNumber];
+//   return randomColor;
+// }
+// colorGenerator();
 
 
 
@@ -141,9 +141,12 @@ function balloonClickHandler(event){
     // DONE: if color === 'selected-color', add points to score
     User.userArray[User.userArray.length -1].currentScore++;
   }
-  else if(event.target.id === 'blue') {
-    // DONE: else color !== 'selected-color', remove points from score
-    User.userArray[User.userArray.length -1].currentScore--;
+  else { for (var i = 1; i < Balloon.colorArray.length; i++){
+    if(event.target.id === Balloon.colorArray[i]) {
+      // DONE: else color !== 'selected-color', remove points from score
+      User.userArray[User.userArray.length -1].currentScore--;
+    }
+  }
   }
   renderCurrentScore();
   document.getElementById('currentScore').remove();
@@ -188,9 +191,9 @@ function renderBalloons() {
   for(var i = 0; i < randomBalloon; i++){
     balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
     balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
-    var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
+    var randomIndex = Math.floor(Math.random() * ((Balloon.colorArray.length - 1) - 1 + 1)) + 1;
     createImg = document.createElement('img');
-    var newRandomBalloon = new Balloon(1);
+    var newRandomBalloon = new Balloon(randomIndex);
     createImg.id = newRandomBalloon.color;
     createImg.src = newRandomBalloon.imageSrc;
     createImg.style.position = 'absolute';
@@ -232,9 +235,9 @@ function renderBalloons() {
       // may need to add an id to the balloons depending on the click event handler functionality
       balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
       balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
-      var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
+      var randomIndex = Math.floor(Math.random() * ((Balloon.colorArray.length - 1) - 1 + 1)) + 1;
       createImg = document.createElement('img');
-      var newRandomBalloon = new Balloon(1);
+      var newRandomBalloon = new Balloon(randomIndex);
       createImg.id = newRandomBalloon.color;
       createImg.src = newRandomBalloon.imageSrc;
       createImg.style.position = 'absolute';
