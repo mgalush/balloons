@@ -1,15 +1,16 @@
 * {
-  border: 1px dashed red;
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 h1 {
+  font-family: 'Luckiest Guy';
   font-size: 60px;
   text-align: center;
   margin-top: 15px;
 }
 
 h2 {
+  font-weight: bold;
   font-size: 32px;
   padding-top: 25px;
   padding-bottom: 10px;
@@ -17,6 +18,8 @@ h2 {
 
 article {
   overflow: hidden;
+  width: 90%;
+  font-size: 20px;
 }
 
 article img {
@@ -25,3 +28,11 @@ article img {
 
 }
 
+footer {
+  max-height: 15px;
+  border: none;
+}
+
+.header-ul {
+  display: none;
+}
