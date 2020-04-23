@@ -153,8 +153,20 @@ function balloonClickHandler(event){
   }
 }
 
+// TODO: render instructions on screen for which color balloon to click
+function renderInstructions() {
+  var target = document.getElementById('game');
+  var h1 = document.createElement('h1');
+  h1.id = "instructions";
+  h1.innerHTML = ('Click the ' + Balloon.colorArray[0] + ' balloons');
+  target.appendChild(h1);
+}
+
+
+
 // DONE: create renderBalloons function
 function renderBalloons() {
+  renderInstructions();
   stopBalloons();
   var divEl = document.getElementById('game');
   divEl.addEventListener('click', balloonClickHandler);
