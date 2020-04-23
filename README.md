@@ -3,9 +3,10 @@
 ## By: Bryant Davis, Marlene Rinker, Dave Wolfe, & Melissa Galush
 ### Final Project for Code Fellows 201  | Version 1.0.0
 
-The purpose of this game is to improve hand-eye coordination. 
+Individuals with cognitive issues lack a fun and interactive way to improve their cognitive abilities, so we set out to help them with this issue.
 
-The object of the game is to pop balloons of a specified color as they appear on the screen.  As the game progresses, the balloons increase in frequency and quantity.  Points are awarded for each balloon popped and a score will be calculated.  The total score will be displayed in a chart displaying previous players scores.
+We decided to create a game to improve hand-eye coordination.
+The object of the game is to pop balloons of a specified color as they appear on the screen.  As the game progresses, the balloons increase in frequency and quantity.  Points are awarded for each balloon popped and a score will be calculated.  The total score will be displayed in a chart displaying previous players’ scores.
 
 ## User stories
 [Project management board](https://github.com/mgalush/balloons/projects/1)
