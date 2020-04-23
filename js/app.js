@@ -5,8 +5,8 @@
 // DONE: create userArray to store all user objects
 // will add more user objects are more users play the game.
 // changed to assign to constructor to make it clear what the array belongs to
-
 User.userArray = [];
+
 
 // DONE: create colorArray for balloons (two colors for now)
 // will add more once some testing is completed
