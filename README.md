@@ -1,7 +1,7 @@
 ![Balloons](assets/balloon-logo.png)
 
 ## By: Bryant Davis, Marlene Rinker, Dave Wolfe, & Melissa Galush
-### Final Project for Code Fellows 201
+### Final Project for Code Fellows 201  | Version 1.0.0
 
 The purpose of this game is to improve hand-eye coordination. 
 
@@ -16,3 +16,4 @@ The object of the game is to pop balloons of a specified color as they appear on
 ![domain-model-overview](assets/domain-model.png)
 
 ![domain-model-js](assets/domain-model-js.png)
+
