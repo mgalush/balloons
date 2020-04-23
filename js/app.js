@@ -183,18 +183,20 @@ function renderBalloons() {
   var balloonCount = 1;
   var randomBalloon = 2;
   var sec = 25;
+  var viewHeight = window.innerHeight;
+  var viewWidth = window.innerWidth;
   var createImg = document.createElement('img');
   var newBalloon = new Balloon(0);
   // createImg.addEventListener('click', function(){
   //   createImg.remove();
   // });
-  var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-  var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+  var balloonLeft = Math.floor(Math.random() * (100 - 10));
+  var balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
   createImg.src = newBalloon.imageSrc;
   createImg.id = newBalloon.color;
   createImg.style.position = 'absolute';
-  createImg.style.left = balloonLeft+'px';
-  createImg.style.top = balloonTop+'px'; // min 100 px
+  createImg.style.left = balloonLeft+'%';
+  createImg.style.top = balloonTop+'%'; // min 100 px
   createImg.style.height = '100px';
   divEl.appendChild(createImg);
   balloonCount = balloonCount + 1;
@@ -207,8 +209,8 @@ function renderBalloons() {
     createImg.id = newRandomBalloon.color;
     createImg.src = newRandomBalloon.imageSrc;
     createImg.style.position = 'absolute';
-    createImg.style.left = balloonLeft+'px';
-    createImg.style.top = balloonTop+'px'; // min 100 px
+    createImg.style.left = balloonLeft+'%';
+    createImg.style.top = balloonTop+'%'; // min 100 px
     createImg.style.height = '100px';
     divEl.appendChild(createImg);
   }
@@ -228,13 +230,13 @@ function renderBalloons() {
       // createImg.addEventListener('click', function(){
       //   createImg.remove();
       // });
-      var balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-      var balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+      var balloonLeft = Math.floor(Math.random() * (100 - 10));
+      var balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
       createImg.src = newBalloon.imageSrc;
       createImg.id = newBalloon.color;
       createImg.style.position = 'absolute';
-      createImg.style.left = balloonLeft+'px';
-      createImg.style.top = balloonTop+'px'; // min 100 px
+      createImg.style.left = balloonLeft+'%';
+      createImg.style.top = balloonTop+'%'; // min 100 px
       createImg.style.height = '100px';
       divEl.appendChild(createImg);
     }
@@ -251,8 +253,8 @@ function renderBalloons() {
       createImg.id = newRandomBalloon.color;
       createImg.src = newRandomBalloon.imageSrc;
       createImg.style.position = 'absolute';
-      createImg.style.left = balloonLeft+'px';
-      createImg.style.top = balloonTop+'px'; // min 100 px
+      createImg.style.left = balloonLeft+'%';
+      createImg.style.top = balloonTop+'%'; // min 100 px
       createImg.style.height = '100px';
       divEl.appendChild(createImg);
     }
@@ -306,7 +308,7 @@ function handleTimer(event){
   //DONE: create a <h3> and id for the timer in the HTML for it to display on the page
   var sec = 30;
   var timer = setInterval(function(){
-    document.getElementById('timer').innerHTML='00:' + sec;
+    document.getElementById('timer').innerHTML='00:' + sec.toString().padStart(2, '0');
     sec--;
     if (sec < 0) {
       clearInterval(timer);
