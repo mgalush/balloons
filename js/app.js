@@ -342,19 +342,6 @@ function timerRender(interval) {
   h3.remove();
   stopTimer();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 // TODO: create endGame function
 
 function endGame() {
@@ -365,5 +352,5 @@ function endGame() {
   var stringyUserResults = JSON.stringify(User.userArray);
   localStorage.setItem('resultsInLocalStorage', stringyUserResults);
   // DONE: send user to results page
-  window.location.pathname = '/results.html';
+  window.location.href = "https://mgalush.github.io/balloons/results";
 }
