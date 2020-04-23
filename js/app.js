@@ -170,16 +170,9 @@ function balloonClickHandler(event){
 function renderInstructions() {
   var target = document.getElementById('game');
   var h1 = document.createElement('h1');
-  var clickImg = document.createElement('img');
   h1.id = "instructions";
-  h1.innerHTML = ('Click the ');
-  h1.style.display = 'inline';
-  h1.style.marginLeft = '350px';
+  h1.innerHTML = ('Click the ' + Balloon.colorArray[0].color + ' balloons');
   target.appendChild(h1);
-  clickImg.src = Balloon.colorArray[0].colorPic;
-  clickImg.style.height = '75px';
-  // clickImg.style.marginTop = '10px';
-  target.appendChild(clickImg);
 }
 
 
