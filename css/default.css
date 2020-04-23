@@ -4,17 +4,8 @@ body {
 
 nav {
   display: flex;
-  justify-content: space-between;
-  padding: 10px 50px;
-}
-
-.empty {
-  width: 175px;
-}
-
-.header-logo {
-  display: flex;
   align-items: center;
+  padding: 10px 50px;
 }
 
 .logo {
@@ -22,12 +13,10 @@ nav {
   width: 400px;
 }
 
-.header-ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 175px;
+.scores {
+  padding: 10px 0;
 }
+
 .center {
   display: block;
   margin: 0 auto;
