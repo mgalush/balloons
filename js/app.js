@@ -11,22 +11,12 @@ User.userArray = [];
 // DONE: create colorArray for balloons (two colors for now)
 // will add more once some testing is completed
 // changed to assign to constructor to make it clear what the array belongs to
-// Balloon.colorArray = ['red', 'blue', 'green', 'yellow', 'purple', 'pink', 'orange', 'light-blue'];
-Balloon.colorArray = [
-  {color: 'red', colorPic: 'assets/red-balloon.png'},
-  {color: 'blue', colorPic: 'assets/blue-balloon.png'},
-  {color: 'green', colorPic: 'assets/green-balloon.png'},
-  {color: 'yellow', colorPic: 'assets/yellow-balloon.png'},
-  {color: 'purple', colorPic: 'assets/purple-balloon.png'},
-  {color: 'pink', colorPic: 'assets/pink-balloon.png'},
-  {color: 'orange', colorPic: 'assets/orange-balloon.png'},
-  {color: 'light-blue', colorPic: 'assets/light-blue-balloon.png'}
-];
+Balloon.colorArray = ['red', 'blue'];
 
 // DONE: create imageSrcArray for balloons (two colors for now)
 // will add more once some testing is completed
 // changed to assign to constructor to make it clear what the array belongs to
-// Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png', 'assets/green-balloon.png', 'assets/yellow-balloon.png', 'assets/purple-balloon.png', 'assets/pink-balloon.png', 'assets/orange-balloon.png', 'assets/light-blue-balloon.png'];
+Balloon.imageSrcArray = ['assets/red-balloon.png', 'assets/blue-balloon.png'];
 
 // DONE: create balloonArray to store all balloon objects
 // will add more balloon objects are more colors and image src are added into the other arrays.
@@ -35,15 +25,15 @@ Balloon.colorArray = [
 
 // Balloon.balloonArray = [];
 
-// DONE: create random color generator, this is a random number that doesn't exceed the length of the colorArray - don't need this because of the way we ended up rendering balloons
+// DONE: create random color generator, this is a random number that doesn't exceed the length of the colorArray
 // this will then be used as the placement in the function to generate the random color
-// function colorGenerator() {
-//   var randomNumber = Math.floor(Math.random() * Balloon.colorArray.length);
-//   // DONE: use random number generator to pick random color from array
-//   var randomColor = Balloon.colorArray[randomNumber];
-//   return randomColor;
-// }
-// colorGenerator();
+function colorGenerator() {
+  var randomNumber = Math.floor(Math.random() * Balloon.colorArray.length);
+  // DONE: use random number generator to pick random color from array
+  var randomColor = Balloon.colorArray[randomNumber];
+  return randomColor;
+}
+colorGenerator();
 
 
 
@@ -52,9 +42,9 @@ Balloon.colorArray = [
 // for example: this.color = colorArray;
 function Balloon (index) {
   // this.color is the index of the colorArray to make it dynamic
-  this.color = Balloon.colorArray[index].color;
+  this.color = Balloon.colorArray[index];
   //this.image is the source of the image in imageSrcArray(same index as the color it is assigned to)
-  this.imageSrc = Balloon.colorArray[index].colorPic;
+  this.imageSrc = Balloon.imageSrcArray[index];
 }
 
 // DONE: create new Balloon objects - one for each color in the color array
@@ -147,16 +137,13 @@ function submitHandler(event) {
 
 function balloonClickHandler(event){
   console.log(event.target.id);
-  if(event.target.id === Balloon.colorArray[0].color){
+  if(event.target.id === 'red'){
     // DONE: if color === 'selected-color', add points to score
     User.userArray[User.userArray.length -1].currentScore++;
   }
-  else { for (var i = 1; i < Balloon.colorArray.length; i++){
-    if(event.target.id === Balloon.colorArray[i].color) {
-      // DONE: else color !== 'selected-color', remove points from score
-      User.userArray[User.userArray.length -1].currentScore--;
-    }
-  }
+  else if(event.target.id === 'blue') {
+    // DONE: else color !== 'selected-color', remove points from score
+    User.userArray[User.userArray.length -1].currentScore--;
   }
   renderCurrentScore();
   document.getElementById('currentScore').remove();
@@ -213,11 +200,11 @@ function renderBalloons() {
   divEl.appendChild(createImg);
   balloonCount = balloonCount + 1;
   for(var i = 0; i < randomBalloon; i++){
-    balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-    balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
-    var randomIndex = Math.floor(Math.random() * ((Balloon.colorArray.length - 1) - 1 + 1)) + 1;
+    balloonLeft = Math.floor(Math.random() * (100 - 10));
+    balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
+    var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
     createImg = document.createElement('img');
-    var newRandomBalloon = new Balloon(randomIndex);
+    var newRandomBalloon = new Balloon(1);
     createImg.id = newRandomBalloon.color;
     createImg.src = newRandomBalloon.imageSrc;
     createImg.style.position = 'absolute';
@@ -257,11 +244,11 @@ function renderBalloons() {
       // need to generate random numbers for createImg.style.left and createImg.style.top
       // top range between something like 50 and 1000 and left range something like 0 to 1450 (need to make sure the balloons are within the background image)
       // may need to add an id to the balloons depending on the click event handler functionality
-      balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-      balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
-      var randomIndex = Math.floor(Math.random() * ((Balloon.colorArray.length - 1) - 1 + 1)) + 1;
+      balloonLeft = Math.floor(Math.random() * (100 - 10));
+      balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
+      var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
       createImg = document.createElement('img');
-      var newRandomBalloon = new Balloon(randomIndex);
+      var newRandomBalloon = new Balloon(1);
       createImg.id = newRandomBalloon.color;
       createImg.src = newRandomBalloon.imageSrc;
       createImg.style.position = 'absolute';
