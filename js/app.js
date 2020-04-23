@@ -135,29 +135,29 @@ function submitHandler(event) {
   // renderAll();
 }
 
-
+function balloonClickHandler(event){
+  console.log(event.target.id);
+  if(event.target.id === 'red'){
+    // DONE: if color === 'selected-color', add points to score
+    User.userArray[User.userArray.length -1].currentScore++;
+  }
+  else if(event.target.id === 'blue') {
+    // DONE: else color !== 'selected-color', remove points from score
+    User.userArray[User.userArray.length -1].currentScore--;
+  }
+  renderCurrentScore();
+  document.getElementById('currentScore').remove();
+  if(event.target.tagName === 'IMG'){
+    // DONE: when balloon is clicked, remove from DOM
+    event.target.remove();
+  }
+}
 
 // DONE: create renderBalloons function
 function renderBalloons() {
   stopBalloons();
   var divEl = document.getElementById('game');
-  divEl.addEventListener('click', function(event){
-    console.log(event.target.id);
-    if(event.target.id === 'red'){
-      // DONE: if color === 'selected-color', add points to score
-      User.userArray[User.userArray.length -1].currentScore++;
-    }
-    else if(event.target.id === 'blue') {
-      // DONE: else color !== 'selected-color', remove points from score
-      User.userArray[User.userArray.length -1].currentScore--;
-    }
-    renderCurrentScore();
-    document.getElementById('currentScore').remove();
-    if(event.target.tagName === 'IMG'){
-      // DONE: when balloon is clicked, remove from DOM
-      event.target.remove();
-    }
-  });
+  divEl.addEventListener('click', balloonClickHandler);
   // will need a random generator for the x and the y position
   // this will need to generate each time the for loop runs
   // the image being rendered is hard coded, will need to make this dynamic and only pull the image that we want it to be
@@ -185,18 +185,20 @@ function renderBalloons() {
   createImg.style.height = '100px';
   divEl.appendChild(createImg);
   balloonCount = balloonCount + 1;
-  balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
-  balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
-  var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
-  createImg = document.createElement('img');
-  var newRandomBalloon = new Balloon(1);
-  createImg.id = newRandomBalloon.color;
-  createImg.src = newRandomBalloon.imageSrc;
-  createImg.style.position = 'absolute';
-  createImg.style.left = balloonLeft+'px';
-  createImg.style.top = balloonTop+'px'; // min 100 px
-  createImg.style.height = '100px';
-  divEl.appendChild(createImg);
+  for(var i = 0; i < randomBalloon; i++){
+    balloonLeft = Math.floor(Math.random() * (1400 - 0 + 1) + 0);
+    balloonTop = Math.floor(Math.random() * (600 - 100 + 1) + 100);
+    var randomIndex = Math.floor(Math.random() * Balloon.colorArray.length);
+    createImg = document.createElement('img');
+    var newRandomBalloon = new Balloon(1);
+    createImg.id = newRandomBalloon.color;
+    createImg.src = newRandomBalloon.imageSrc;
+    createImg.style.position = 'absolute';
+    createImg.style.left = balloonLeft+'px';
+    createImg.style.top = balloonTop+'px'; // min 100 px
+    createImg.style.height = '100px';
+    divEl.appendChild(createImg);
+  }
   randomBalloon = randomBalloon + 2;
 
 
@@ -204,7 +206,7 @@ function renderBalloons() {
 
 
 
-    for (var i = 0; i < balloonCount; i++){//loop for the target balloons
+    for (i = 0; i < balloonCount; i++){//loop for the target balloons
       // need to generate random numbers for createImg.style.left and createImg.style.top
       // top range between something like 50 and 1000 and left range something like 0 to 1450 (need to make sure the balloons are within the background image)
       // may need to add an id to the balloons depending on the click event handler functionality
@@ -253,12 +255,6 @@ function renderBalloons() {
     }
 
   }, 5000);
-
-
-
-
-
-  // }
 }
 
 
