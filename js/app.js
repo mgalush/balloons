@@ -3,6 +3,17 @@
 
 // create userArray to store all user objects
 User.userArray = [];
+if (localStorage.getItem('resultsInLocalStorage')){
+  getUsersFromLocalStorage();
+}
+
+function getUsersFromLocalStorage(){
+  var users = JSON.parse(localStorage.getItem('resultsInLocalStorage'));
+  for (var i = 0; i < users.length; i++){
+    User.userArray.push(users[i]);
+  }
+
+}
 
 // create colorArray for balloons
 Balloon.colorArray = [
@@ -265,6 +276,7 @@ function endGame() {
   );
   // store userArray array in local storage
   var stringyUserResults = JSON.stringify(User.userArray);
+  debugger
   localStorage.setItem('resultsInLocalStorage', stringyUserResults);
 
   setTimeout( function(){
