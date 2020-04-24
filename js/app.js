@@ -171,11 +171,11 @@ function renderBalloons() {
       divEl.appendChild(createImg);
     }
     randomBalloon = randomBalloon + 2;
-    sec = sec - 5;
+    sec = sec - 3;
     if (sec < 0) {
       clearInterval(balloonRender);
     }
-  }, 5000);
+  }, 3000);
 }
 
 function startTimer() {
@@ -202,8 +202,16 @@ function renderGif() {
   var target = document.getElementById('game');
   var createImg = document.createElement('img');
   createImg.src = "https://media.giphy.com/media/NSHwhrFyDcLY1RSkkw/source.gif";
-  createImg.id = "balloon-gif"
+  createImg.id = "balloon-gif";
   target.appendChild(createImg);
+  setTimeout( function(){
+    createImg.remove();
+    var target = document.getElementById('game');
+    var createImgGameOver = document.createElement('img');
+    createImgGameOver.src = "https://media.giphy.com/media/1hMbkOaFfYmZvvEBq9/source.gif";
+    createImgGameOver.id = "game-over-gif";
+    target.appendChild(createImgGameOver);
+  }, 2000);
 }
 
 //bind the timer to the event
@@ -239,12 +247,8 @@ function endGame() {
   var target = document.getElementById('deleteMe')
   createDiv.id = 'game';
   target.appendChild(createDiv);
-  
+
   renderGif();
-  setTimeout( function(){
-    // send user to results page
-    window.location.href = 'https://mgalush.github.io/balloons/results';
-  }, 3000)
   // push currentScore into array
   User.userArray[User.userArray.length - 1].allScores.push(
     User.userArray[User.userArray.length - 1].currentScore
@@ -252,5 +256,9 @@ function endGame() {
   // store userArray array in local storage
   var stringyUserResults = JSON.stringify(User.userArray);
   localStorage.setItem('resultsInLocalStorage', stringyUserResults);
-  
+
+  setTimeout( function(){
+    // send user to results page
+    window.location.href = 'https://mgalush.github.io/balloons/results';
+  }, 6000);
 }

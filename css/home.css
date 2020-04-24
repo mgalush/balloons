@@ -79,7 +79,11 @@ p {
 }
 
 
-#balloon-gif {
+#balloon-gif, #game-over-gif {
   height: 60vh;
   width: 40vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
