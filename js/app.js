@@ -56,10 +56,9 @@ formSubmission.addEventListener('submit', submitHandler);
 function submitHandler(event) {
   event.preventDefault();
   var userValue = document.getElementById('name');
-  var newUser = new User(userValue.value);
+  new User(userValue.value);
   var target = document.getElementById('deleteMe');
   target.innerHTML = '';
-  var gameContainer = document.getElementById('gameContainer');
   var createDiv = document.createElement('div');
   createDiv.id = 'game';
   target.appendChild(createDiv);
@@ -97,7 +96,6 @@ function balloonClickHandler(event) {
   }
 }
 
-
 // render instructions on screen for which color balloon to click
 function renderInstructions() {
   var target = document.getElementById('game');
@@ -105,7 +103,7 @@ function renderInstructions() {
   h1.id = 'instructions';
   h1.innerHTML = 'Click the ' + Balloon.colorArray[Balloon.goodBalloonArray[0]].color + ' balloons';
   h1.style.backgroundColor = Balloon.colorArray[Balloon.goodBalloonArray[0]].color;
-  var flash = setInterval(function() {
+  setInterval(function() {
     h1.style.backgroundColor = '';
   }, 1000);
 
@@ -150,7 +148,6 @@ function badBalloon(){
   createImg.style.top = balloonTop + '%'; // min 100 px
   createImg.style.height = '100px';
   target.appendChild(createImg);
-
 
 }
 // create renderBalloons function
