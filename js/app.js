@@ -76,7 +76,7 @@ function submitHandler(event) {
 
 function balloonClickHandler(event) {
   
-  if (event.target.id === Balloon.colorArray[0].color) {
+  if (event.target.id === Balloon.colorArray[Balloon.goodBalloonArray[0]].color) {
     // if color === 'selected-color', add points to score
     User.userArray[User.userArray.length - 1].currentScore++;
     popBalloon();
@@ -97,29 +97,33 @@ function balloonClickHandler(event) {
   }
 }
 
+
 // render instructions on screen for which color balloon to click
 function renderInstructions() {
   var target = document.getElementById('game');
   var h1 = document.createElement('h1');
   h1.id = 'instructions';
-  h1.innerHTML = 'Click the ' + Balloon.colorArray[0].color + ' balloons';
+  h1.innerHTML = 'Click the ' + Balloon.colorArray[Balloon.goodBalloonArray[0]].color + ' balloons';
+  h1.style.backgroundColor = Balloon.colorArray[Balloon.goodBalloonArray[0]].color;
+  var flash = setInterval(function() {
+    h1.style.backgroundColor = '';
+  }, 1000);
+
   target.appendChild(h1);
 }
+Balloon.goodBalloonArray = [];
+function goodBalloon(){
+  console.log('random index array start of the render ' + Balloon.goodBalloonArray);
+  Balloon.goodBalloonArray = [];
+  console.log('random index array after it was cleared ' + Balloon.goodBalloonArray);
 
-// create renderBalloons function
-function renderBalloons() {
-  renderInstructions();
-  stopBalloons();
+  var randomIndex = Math.floor(Math.random() * (Balloon.colorArray.length -1));
+  Balloon.goodBalloonArray.push(randomIndex)
+  console.log('random index' + randomIndex);
+  console.log('random index array after it was pushed ' + Balloon.goodBalloonArray);
   var divEl = document.getElementById('game');
-  divEl.addEventListener('click', balloonClickHandler);
-  //  render balloons to the page every x seconds using the increased balloon count
-  var balloonCount = 1;
-  var randomBalloon = 2;
-  var sec = 25;
-  var viewHeight = window.innerHeight;
-  var viewWidth = window.innerWidth;
   var createImg = document.createElement('img');
-  var newBalloon = new Balloon(0);
+  var newBalloon = new Balloon(randomIndex);
   var balloonLeft = Math.floor(Math.random() * (100 - 10));
   var balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
   createImg.src = newBalloon.imageSrc;
@@ -129,55 +133,58 @@ function renderBalloons() {
   createImg.style.top = balloonTop + '%'; // min 100 px
   createImg.style.height = '100px';
   divEl.appendChild(createImg);
+}
+
+function badBalloon(){
+  var target = document.getElementById('game');
+  var balloonLeft = Math.floor(Math.random() * (100 - 10));
+  var balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
+  var randomIndex = Math.floor(Math.random() * (Balloon.colorArray.length -1));
+  console.log(randomIndex);
+  var createImg = document.createElement('img');
+  var newRandomBalloon = new Balloon(randomIndex);
+  createImg.id = newRandomBalloon.color;
+  createImg.src = newRandomBalloon.imageSrc;
+  createImg.style.position = 'absolute';
+  createImg.style.left = balloonLeft + '%';
+  createImg.style.top = balloonTop + '%'; // min 100 px
+  createImg.style.height = '100px';
+  target.appendChild(createImg);
+
+
+}
+// create renderBalloons function
+function renderBalloons() {
+  stopBalloons();
+  var divEl = document.getElementById('game');
+  divEl.addEventListener('click', balloonClickHandler);
+  //  render balloons to the page every x seconds using the increased balloon count
+  var randomBalloon = 2;
+  var balloonCount = 1;
+  
+  goodBalloon();
+  renderInstructions();
   balloonCount = balloonCount + 1;
+  badBalloon();
+
+  var sec = 25;
   for (var i = 0; i < randomBalloon; i++) {
-    balloonLeft = Math.floor(Math.random() * (100 - 10));
-    balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
-    var randomIndex =
-      Math.floor(Math.random() * (Balloon.colorArray.length - 1 - 1 + 1)) + 1;
-    createImg = document.createElement('img');
-    var newRandomBalloon = new Balloon(randomIndex);
-    createImg.id = newRandomBalloon.color;
-    createImg.src = newRandomBalloon.imageSrc;
-    createImg.style.position = 'absolute';
-    createImg.style.left = balloonLeft + '%';
-    createImg.style.top = balloonTop + '%'; // min 100 px
-    createImg.style.height = '100px';
-    divEl.appendChild(createImg);
+    badBalloon();
   }
   randomBalloon = randomBalloon + 2;
 
   var balloonRender = setInterval(function () {
     for (i = 0; i < balloonCount; i++) {
       //loop for the target balloons
-      var createImg = document.createElement('img');
-      var newBalloon = new Balloon(0);
-      balloonLeft = Math.floor(Math.random() * (100 - 10));
-      balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
-      createImg.src = newBalloon.imageSrc;
-      createImg.id = newBalloon.color;
-      createImg.style.position = 'absolute';
-      createImg.style.left = balloonLeft + '%';
-      createImg.style.top = balloonTop + '%'; // min 100 px
-      createImg.style.height = '100px';
-      divEl.appendChild(createImg);
+      goodBalloon();
+      document.getElementById('instructions').remove();
+      renderInstructions();
+
     }
     balloonCount = balloonCount + 1;
     for (i = 0; i < randomBalloon; i++) {
       //loop for the target balloons
-      balloonLeft = Math.floor(Math.random() * (100 - 10));
-      balloonTop = Math.floor(Math.random() * (90 - 15) + 10);
-      var randomIndex =
-        Math.floor(Math.random() * (Balloon.colorArray.length - 1 - 1 + 1)) + 1;
-      createImg = document.createElement('img');
-      var newRandomBalloon = new Balloon(randomIndex);
-      createImg.id = newRandomBalloon.color;
-      createImg.src = newRandomBalloon.imageSrc;
-      createImg.style.position = 'absolute';
-      createImg.style.left = balloonLeft + '%';
-      createImg.style.top = balloonTop + '%'; // min 100 px
-      createImg.style.height = '100px';
-      divEl.appendChild(createImg);
+     badBalloon();
     }
     randomBalloon = randomBalloon + 2;
     sec = sec - 3;
