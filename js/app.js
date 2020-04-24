@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 'use strict';
 
 // create userArray to store all user objects
@@ -41,6 +42,11 @@ function renderCurrentScore() {
   targetDiv.appendChild(createH3);
 }
 
+function popBalloon(){
+  var audio = new Audio("assets/Balloon-pop.mp3");
+  audio.play();
+}
+
 // create event listener for form
 // this will be targetting the submit/play button
 var formSubmission = document.getElementById('form');
@@ -69,14 +75,17 @@ function submitHandler(event) {
 }
 
 function balloonClickHandler(event) {
+  
   if (event.target.id === Balloon.colorArray[0].color) {
     // if color === 'selected-color', add points to score
     User.userArray[User.userArray.length - 1].currentScore++;
+    popBalloon();
   } else {
     for (var i = 1; i < Balloon.colorArray.length; i++) {
       if (event.target.id === Balloon.colorArray[i].color) {
         // else color !== 'selected-color', remove points from score
         User.userArray[User.userArray.length - 1].currentScore--;
+        popBalloon();
       }
     }
   }
@@ -205,13 +214,14 @@ function renderGif() {
   createImg.id = "balloon-gif";
   target.appendChild(createImg);
   setTimeout( function(){
+    popBalloon();
     createImg.remove();
     var target = document.getElementById('game');
     var createImgGameOver = document.createElement('img');
     createImgGameOver.src = "https://media.giphy.com/media/1hMbkOaFfYmZvvEBq9/source.gif";
     createImgGameOver.id = "game-over-gif";
     target.appendChild(createImgGameOver);
-  }, 2000);
+  }, 1900);
 }
 
 //bind the timer to the event
