@@ -276,7 +276,6 @@ function endGame() {
   );
   // store userArray array in local storage
   var stringyUserResults = JSON.stringify(User.userArray);
-  debugger
   localStorage.setItem('resultsInLocalStorage', stringyUserResults);
 
   setTimeout( function(){
